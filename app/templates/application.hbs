@@ -1,0 +1,51 @@
+{{page-title "home"}}
+<h2 class="title">📚 Book Manager</h2>
+<div {{on-click-outside this.alert}} class='card'>
+{{#each this.flashMessages.queue as |flash|}}
+  <FlashMessage
+    @flash={{flash}}
+    class="flash-message {{flash.type}}"
+    as |component flash close|
+  >
+    <span class="message-text">{{flash.message}}</span>
+    <span class="close-btn" role="button" {{on "click" close}}>&times;</span>
+  </FlashMessage>
+{{/each}}
+ {{notification-container position="top-right" zindex="9999"}}
+  <div id="liquid-spacer-demo">
+    <p>
+      {{#if this.showLongMessage}}
+        {{this.longMessage}}
+      {{else}}
+        {{this.shortMessage}}
+        <span class="show-more" {{on "click" this.toggleMessage}}>Show More...</span>
+      {{/if}}
+    </p>
+
+    <LiquidSpacer @growDuration={{250}}>
+      {{#if this.showLongMessage}}
+        <span class="show-less" {{on "click" this.toggleMessage}}>Show Less</span>
+      {{/if}}
+    </LiquidSpacer>
+  </div>
+<div>
+
+<nav class="navbar">
+  <LinkTo @route="add-book" class="nav-link">➕ Add</LinkTo>
+  <LinkTo @route="index" class="nav-link">🏠 Home</LinkTo>
+  <LinkTo @route="edit" class="nav-link">✏️ Edit</LinkTo>
+  <LinkTo @route="truth-helpers-demo" class="nav-link">📖 truth</LinkTo>
+  <LinkTo @route="book-list" class="nav-link">📖 List</LinkTo>
+  <LinkTo @route="scrollable" class="nav-link">📖 List</LinkTo>
+
+</nav>
+<br>
+<br>
+<BasicDropdownWormhole />
+
+<div class="content">
+  {{outlet}}
+</div>
+ </div>
+</div>
+

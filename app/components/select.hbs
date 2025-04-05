@@ -1,0 +1,91 @@
+<h1>single selection</h1>
+
+  <PowerSelect
+    @selected={{this.number}}
+    @options={{this.numbers}}
+    @onChange={{fn (mut this.number)}}
+     @labelText="number"
+    @placeholder=" number" as |number|>
+    {{number}}
+  </PowerSelect>
+   <p>Selected number={{this.number}} </p>
+
+  <h1>multiples selection</h1>
+
+<PowerSelectMultiple
+  @options={{this.names}}
+  @selected={{this.name}}
+  @labelText="Name"
+  @placeholder="Select some names..."
+  @onChange={{fn (mut this.name)}} as |name|>
+  {{name}}
+</PowerSelectMultiple>
+
+<h1>dynamic content selection</h1>
+
+<PowerSelect
+  @options={{this.countries}}
+  @selected={{this.country}}
+   @searchField="name"
+  @labelText="Country"
+  @onChange={{fn (mut this.country)}}
+  as |country|>
+  <div class="country-detailed-info">
+    <div class="country-data-text">
+      <strong>{{country.name}}</strong>
+      <br>
+      <small>Population in 2014: <i>{{country.population}}</i></small>
+    </div>
+  </div>
+</PowerSelect>
+
+<h1>With clear button </h1>
+
+
+  <PowerSelect
+  @allowClear={{true}}
+    @selected={{this.number}}
+    @options={{this.numbers}}
+    @onChange={{fn (mut this.number)}}
+     @labelText="number"
+    @placeholder=" number" as |number|>
+    {{number}}
+  </PowerSelect>
+  <h1>Group selection</h1>
+  <PowerSelect
+  @options={{this.groupedNumbers}}
+  @selected={{this.number}}
+  @labelText="Number"
+  @onChange={{fn (mut this.number)}} as |num|>
+  {{num}}
+</PowerSelect>
+
+<h1>Empty options</h1>
+<PowerSelect
+  @options={{this.empty}}
+  @selected={{this.number}}
+  @labelText="Number"
+  @onChange={{fn (mut this.number)}} as |num|>
+  {{num}}
+</PowerSelect>
+
+<h1>Empty but cutom message</h1>
+<PowerSelect
+  @options={{this.empty}}
+  @noMatchesMessage="custom empty message "
+  @selected={{this.selected}}
+  @labelText="Matches message"
+  @onChange={{fn (mut this.selected)}}
+  as |name|>
+  {{name}}
+</PowerSelect>  <h1>search selection</h1>
+
+<PowerSelectMultiple
+@searchEnabled="{{true}}"
+  @options={{this.names}}
+  @selected={{this.name}}
+  @labelText="Name"
+  @placeholder="Select some names..."
+  @onChange={{fn (mut this.name)}} as |name|>
+  {{name}}
+</PowerSelectMultiple>

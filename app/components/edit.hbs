@@ -1,0 +1,40 @@
+
+<div class="book-list-container">
+<table>
+
+<thead>
+    <tr>
+       <th>Name</th>
+      <th>Author</th>
+      <th>Price</th>
+      <th>Gender</th>
+      <th>Categories</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+<VerticalCollection
+  @items={{@books}}
+      @estimateHeight={{4}}
+  @containerSelector=".book-list-container"
+
+  @key="name"
+  as |book index|
+>
+  <tr>
+     <td>{{book.name}}</td>
+    <td>{{book.author}}</td>
+    <td>${{book.price}}</td>
+    <td>{{book.gender}}</td>
+    <td>{{book.categories}}</td>
+    <td>
+
+          <a href={{this.router.urlFor "add-book"}}>
+            <button type="button" {{on "click" (fn @onEdit book index)}}>Edit</button>
+          </a>    </td>
+  </tr>
+
+</VerticalCollection>  </tbody></table>
+</div>
+
+ <button class="delete-btn" type="button" {{on "click" this.bulkDelete}}>Bulk Delete</button>

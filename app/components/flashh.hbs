@@ -1,0 +1,17 @@
+<h2>Ember Truth Helpers Demo</h2>
+<label>A: <input type="number" value={{this.a}} {{on "input" this.updateA}}></label>
+<label>B: <input type="number" value={{this.b}} {{on "input" this.updateB}}></label>
+
+<p>Equal (`eq`): {{if (eq this.a this.b) "   Equal" " {{a}} this.a Not Equal"}}</p>
+<p>Not Equal (`not-eq`): {{if (not-eq this.a this.b) "   Not Equal" "  Equal"}}</p>
+<p>Not (`not`): {{if this.isActive "Active" "Inactive"}}</p>
+<p>And (`and`): {{if (and this.a this.b) "   Both True" "  One or Both False"}}</p>
+<p>Or (`or`): {{if (or this.a this.b) "   At Least One True" "  Both False"}}</p>
+<p>XOR (`xor`): {{if (xor this.a this.b) "   Only One is True" "  Both Same"}}</p>
+<p>Greater Than (`gt`): {{if (gt this.a this.b) "   A is Greater" "  A is Not Greater"}}</p>
+<p>Greater Than or Equal (`gte`): {{if (gte this.a this.b) "   A is Greater or Equal" "  A is Less"}}</p>
+<p>Less Than (`lt`): {{if (lt this.a this.b) "   A is Lesser" "  A is Not Lesser"}}</p>
+<p>Less Than or Equal (`lte`): {{if (lte this.a this.b) "   A is Lesser or Equal" "  A is Greater"}}</p>
+<p>Is Array (`is-array`): {{if (is-array this.items) "   It's an Array" "  Not an Array"}}</p>
+<p>Is Empty (`is-empty`): {{if (is-empty this.items) "   Array is Empty" "  Array has Items"}}</p>
+<p>Is Equal (`is-equal`): {{if (is-equal this.a this.b) "   Ember.isEqual - Equal" "  Not Equal"}}</p>

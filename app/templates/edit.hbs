@@ -1,0 +1,5 @@
+{{page-title "edit"}}
+
+<Edit @books={{this.application.books}} @onDelete={{this.deleteBook}} @onBulkDelete={{this.deleteBooks}} @onEdit={{this.startEditing}} />
+
+<BookForm @onSave={{this.addOrUpdateBook}} @editingBook={{this.application.editingBook}} />

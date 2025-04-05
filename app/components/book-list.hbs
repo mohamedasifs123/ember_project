@@ -1,0 +1,42 @@
+<input type="text" placeholder="Search Book..." {{on "input" this.updateSearch}}>
+<button type="button" {{on "click" this.searchBook}}>Search</button>
+
+<div class="book-list-container">
+<table>
+
+<thead>
+    <tr>
+      <th>Select</th>
+      <th>Name</th>
+      <th>Author</th>
+      <th>Price</th>
+      <th>Gender</th>
+      <th>Categories</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+<VerticalCollection
+  @items={{@books}}
+      @estimateHeight={{5}}
+  @containerSelector=".book-list-container"
+
+  @key="name"
+  as |book index|
+>
+  <tr>
+    <td><input type="checkbox" {{on "change" (fn this.toggleSelection index)}}></td>
+    <td>{{book.name}}</td>
+    <td>{{book.author}}</td>
+    <td>${{book.price}}</td>
+    <td>{{book.gender}}</td>
+    <td>{{book.categories}}</td>
+    <td>
+      <BsButton @type="danger" @onClick={{fn this.deleteBook index}}>Delete</BsButton>
+    </td>
+  </tr>
+
+</VerticalCollection>  </tbody></table>
+</div>
+
+ <button class="delete-btn" type="button" {{on "click" this.bulkDelete}}>Bulk Delete</button>

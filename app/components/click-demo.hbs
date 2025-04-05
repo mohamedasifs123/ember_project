@@ -1,0 +1,14 @@
+<h2>Click Outside Example</h2>
+
+{{!-- Click outside this div will trigger `outsideClicked()` --}}
+<div {{on-click-outside this.outsideClicked eventType="mousedown" exceptSelector=".btn"}} class="p-4 border rounded-md">
+
+  {{!-- Except selector: Clicking inside this div won't trigger outside click --}}
+  <div class="content-box some-selector p-4 bg-gray-100 rounded-lg">
+    <p>Clicking inside this box won't trigger an outside click.</p>
+  </div> </div>
+    {{!-- Button excluded from outside click, using `mousedown` --}}
+    <button class="btn" type="button"   {{on "click" this.handleClick}}>
+      Click Me
+    </button>
+ 

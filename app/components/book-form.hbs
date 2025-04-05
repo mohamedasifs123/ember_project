@@ -1,0 +1,35 @@
+
+<div>
+  <input type="text" value={{this.bookName}} name="bookName" placeholder="Book Name" {{on "input" this.updateField}}>
+  <input type="text" value={{this.bookAuthor}} name="bookAuthor" placeholder="Author" {{on "input" this.updateField}}>
+  <input type="number" value={{this.bookPrice}} name="bookPrice" placeholder="Price ($)" {{on "input" this.updateField}}>
+
+  {{!-- Gender Dropdown --}}
+  <PowerSelect class="selec"
+
+  @searchEnabled={{false}}
+  @options={{this.genders}}
+  style="  padding: 8px;"
+   @selected={{this.bookGender }}
+   @onChange={{fn (mut this.bookGender)}} as |bookGender|>
+  {{bookGender}}
+</PowerSelect>
+  {{!-- Categories (Checkboxes) --}}
+  <PowerSelectMultiple class="selec"
+  @searchEnabled={{true}}
+  @options={{this.options}}
+  @selected={{this.bookCategories }}
+  @placeholder="Select Category..."   style="  padding: 8px;"
+
+  @onChange={{fn (mut this.bookCategories)}} as |bookCategories|>
+  {{bookCategories}}
+</PowerSelectMultiple>
+
+<BasicDropdownWormhole />
+
+  <button class="btn" type="button" {{on-key '/'}} {{on "click"  (perform this.saveBook)}} disabled={{this.saveBook.isRunning}}  >
+  {{if this.saveBook.isRunning "Saving..." (if (or @editingBook this.isEditing) "Update Book" "Add Book")}}
+
+  </button>
+ 
+</div>
