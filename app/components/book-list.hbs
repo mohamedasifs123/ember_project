@@ -21,18 +21,20 @@
       @estimateHeight={{5}}
   @containerSelector=".book-list-container"
 
-  @key="name"
-  as |book index|
+  @key="id"
+  as |book name|
 >
   <tr>
-    <td><input type="checkbox" {{on "change" (fn this.toggleSelection index)}}></td>
-    <td>{{book.name}}</td>
+    <td>      <input type="checkbox" {{on "change" (fn this.toggleSelection book.id)}} />
+    </td>   
+    
+      <td>{{book.name}}</td>
     <td>{{book.author}}</td>
     <td>${{book.price}}</td>
     <td>{{book.gender}}</td>
     <td>{{book.categories}}</td>
     <td>
-      <BsButton @type="danger" @onClick={{fn this.deleteBook index}}>Delete</BsButton>
+      <BsButton @type="danger" @onClick={{fn this.deleteBook book.id}}>Delete</BsButton>
     </td>
   </tr>
 

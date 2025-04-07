@@ -1,0 +1,16 @@
+<p>Total items: {{this.model.items.length}}</p>
+<div class="book-list-container">
+   <VerticalCollection
+    @items={{this.application.items}}
+    @estimateHeight={{120}}
+    @bufferSize={{5}}
+    @key="id"
+    @lastReached={{fn this.loadMore this.model}}
+    as |item|
+  >
+    <div class="flash-box">
+      Box ID: {{item.id}}
+    </div>
+  </VerticalCollection>
+ 
+</div>

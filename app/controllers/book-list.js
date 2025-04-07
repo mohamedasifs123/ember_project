@@ -6,13 +6,8 @@ import { inject as service } from '@ember/service';
 export default class BookListController extends Controller {
   @controller application; // Inject application controller
 @service flashMessages;
-  @action
-  deleteBooks(selectedIndexes) {
-this.flashMessages.Delete('Books deleted successfully!');
-    this.application.books = this.application.books.filter(
-      (_, index) => !selectedIndexes.includes(index),
-    );
-  }
+ 
+
 
   @action
   startEditing(book, index) {
@@ -20,9 +15,9 @@ this.flashMessages.Delete('Books deleted successfully!');
     this.application.editingIndex = index;
   }
   @action
-  deleteBook(index) {
+  odeleteBook(name) {
     this.flashMessages.add({
-      message: 'books deleted successfully!',
+      message: 'Book deleted successfully!',
       type: 'Delete',
       timeout: 500,
       priority: 200,
@@ -30,12 +25,21 @@ this.flashMessages.Delete('Books deleted successfully!');
       showProgress: true,
       extendedTimeout: 500,
       destroyOnClick: false,
-      onDestroy() {
-        // behavior triggered when flash is destroyed
-      },
     });
-     this.application.books = this.application.books.filter(
-      (_, i) => i !== index,
+
+    this.application.books = this.application.books.filter(
+      (book) => book.name !== name
     );
   }
+  @action
+  deleteBook(bookId) {
+    this.application.books = this.application.books.filter(b => b.id !== bookId);
+  }
+  @action
+  deleteBooks(selectedIds) {
+    this.application.books = this.application.books.filter(
+      (book) => !selectedIds.includes(book.id)
+    );
+  }
+  
 }

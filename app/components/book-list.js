@@ -16,20 +16,16 @@ export default class BookListComponent extends Component {
   @service notifications;
 
   @action
-  toggleSelection(index) {
-    if (this.selectedBooks.has(index)) {
-      this.selectedBooks.delete(index);
+  toggleSelection(bookId) {
+    if (this.selectedBooks.has(bookId)) {
+      this.selectedBooks.delete(bookId);
     } else {
-      this.selectedBooks.add(index);
+      this.selectedBooks.add(bookId);
     }
-    this.selectedBooks = new Set(this.selectedBooks); // Ensure UI updates
+    this.selectedBooks = new Set(this.selectedBooks); // re-trigger render
   }
 
-  @action
-  selectSingleBook(index) {
-    this.singleSelectedBook = index;
-  }
-
+ 
   @action
   bulkDelete() {
     if (this.selectedBooks.size === 0) {

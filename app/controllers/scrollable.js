@@ -10,7 +10,7 @@ export default class extends Controller {
   @action
   loadAbove() {
     let first = this.model.data.first;
-    let numbers = getNumbers(first - 20, 20);
+    let numbers = get (first - 20, 20);
     let model = this.model.data.numbers;
     model.unshiftObjects(numbers);
     this.model.set('data.first', first - 20);

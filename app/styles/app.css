@@ -94,7 +94,12 @@ body {
 .flash-message.error {
   background-color: #e53e3e; /* Red */
 }
-
+.scroll-container {
+  height: 90vh;
+  overflow-y: auto;
+  padding: 1rem;
+}
+ 
 .flash-box {
   background-color: #007bff;
   color: white;
@@ -106,15 +111,6 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-}
-
-.number {
-  font-weight: bold;
-}
-
-.index {
-  font-size: 1rem;
-  opacity: 0.8;
 }
 
 .flash-message.info {
@@ -161,11 +157,16 @@ body {
 }
 
 .book-list-container {
-  height: 400px; /* Fixed height for scrolling */
-  overflow-y: auto;
+   overflow-y: auto;
   border: 1px solid #ccc;
   padding: 10px;
+ display: block;
+  height: 500px;
+  overflow: scroll;
+  position: relative;
+  background: #fff;
 }
+ 
 
 .book-item {
   padding: 10px;

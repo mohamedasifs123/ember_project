@@ -1,5 +1,4 @@
 import Component from '@glimmer/component';
-import { computed } from '@ember/object';
 import { htmlSafe } from '@ember/template';
 
 function numberToOpacity(number) {
@@ -8,13 +7,13 @@ function numberToOpacity(number) {
   return (255 / (number % 255)).toFixed(3);
 }
 
-export default class NumberSlideComponent extends Component {
+export default class FlashComponent extends Component {
   get style() {
     const { item } = this.args;
     const isDynamic = this.args.isDynamic || false;
 
     const opacity = numberToOpacity(item.number);
-    let styleStr = `background: rgba(0,125,255,${opacity});`;
+    let styleStr = `background: rgba(0, 125, 255, ${opacity});`;
 
     if (isDynamic) {
       styleStr += ` height: ${Math.round(item.height)}px; box-sizing: content-box;`;
@@ -22,4 +21,5 @@ export default class NumberSlideComponent extends Component {
 
     return htmlSafe(styleStr);
   }
+  
 }

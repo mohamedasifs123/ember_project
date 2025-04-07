@@ -39,12 +39,7 @@ genders = ['Male', 'Female'];
       someOption: 'hello',
     });
 
-    this.flashMessages.add({
-      message: 'hello',
-      type: 'foo',
-      componentName: 'some-component',
-      content: customContent,
-    });
+    
     if (!this.bookName || !this.bookAuthor || !this.bookPrice || !this.bookGender) {
       this.flashMessages.success('Please fill all required fields!');
       return;
@@ -69,6 +64,7 @@ genders = ['Male', 'Female'];
     });
 
     this.args.onSave({
+      id: this.args.editingBook?.id || Date.now(),
       name: this.bookName,
       author: this.bookAuthor,
       price: this.bookPrice,

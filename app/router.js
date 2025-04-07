@@ -16,4 +16,6 @@ Router.map(function () {
   this.route('select');
   this.route('scrollable');
   this.route('flexible');
+  this.route('key');
+  this.route('inf');
 });
